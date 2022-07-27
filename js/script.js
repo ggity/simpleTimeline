@@ -1,17 +1,17 @@
 
 // scrollTrigger za komplet timeline container 
 
-const timelineT = document.querySelector('.timeline');
+const timelineT = document.querySelectorAll('.timeline-content');
 
 let timelineTL = gsap.timeline();
 
-for (let i = 0; i < timelineT.children.length; i++) {
+for (let i = 0; i < timelineT.length; i++) {
     let fromX = 1000;
     if (i % 2 === 0) {
         fromX *= -1;
         console.log("grom x je: " + fromX);
     }
-    timelineTL.from(timelineT.children.item(i), {
+    timelineTL.from(timelineT.item(i), {
         x: fromX + "px",
         duration: 1,
     });
@@ -19,7 +19,7 @@ for (let i = 0; i < timelineT.children.length; i++) {
 
 ScrollTrigger.create({
     trigger: ".timeline-container",
-    markers: true,
+    // markers: true,
     start: "100px center",
     end: "bottom center",
     animation: timelineTL,
